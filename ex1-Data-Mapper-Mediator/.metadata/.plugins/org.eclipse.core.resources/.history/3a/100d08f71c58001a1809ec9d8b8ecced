@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/testing" name="TestingAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/datamapper">
+        <inSequence>
+            <log description="Log Start" level="full"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

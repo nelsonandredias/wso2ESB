@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/testing" name="TestingAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/datamapper">
+        <inSequence>
+            <log description="Log Start" level="full"/>
+            <datamapper config="gov:datamapper/RequestMapping.dmc" description="MappingRequest" inputSchema="gov:datamapper/RequestMapping_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/RequestMapping_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/RequestMapping_xsltStyleSheet.xml"/>
+            <log description="Log End" level="full"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
