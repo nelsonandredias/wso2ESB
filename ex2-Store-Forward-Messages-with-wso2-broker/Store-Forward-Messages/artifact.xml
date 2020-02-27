@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TestingAPI2.0.1" groupId="com.example.Store-Forward-Messages.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TestingAPI2.0.1.xml</file>
+    </artifact>
+    <artifact name="store-message-artifactory" groupId="com.example.Store-Forward-Messages.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/store-message-artifactory.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/testing/2.0.1" name="TestingAPI2.0.1" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/storemessage">
+        <inSequence>
+            <payloadFactory description="SET PAYLOAD" media-type="xml">
+                <format>
+                    <note xmlns="">
+                        <to>Tove</to>
+                        <from>Jani</from>
+                        <heading>Reminder</heading>
+                        <body>Don't forget me this weekend!</body>
+                    </note>
+                </format>
+                <args/>
+            </payloadFactory>
+            <log level="full"/>
+            <store description="Store Message" messageStore="store-message-artifactory"/>
+            <payloadFactory description="SET RESPONSE" media-type="json">
+                <format>{"message": "message was sucessfully stored in queue!"}</format>
+                <args/>
+            </payloadFactory>
+            <respond description="RESPONSE"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
