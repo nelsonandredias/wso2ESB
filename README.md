@@ -2,14 +2,16 @@
 repository with several exercises about WSO2 ESB
 
 
-Ex2- Store Message with WSO2 Broker queue
+## Ex2- Store Message with WSO2 Broker queue
 
-Create a queue in the WSO2 Broker: 
+In order to avoid ***´error: no route for message error code 312: no route´***, it is important to create the testing queue in the WSO2 Broker: 
 
 Configuring qpid-virtualhosts.xml:
+
 This configuration file contains details of all queues and topics, and associated properties, to be created on broker startup. 
 
 Add a new queue:
+```
 <queue>
   <name>my-simple-queue</name>
 	<my-simple-queue>
@@ -17,10 +19,13 @@ Add a new queue:
 	<durable>true</durable>
 	</my-simple-queue>
 </queue>
+```
 
 Specify the queue type of exchange:
+```
 <exchange>
   <type>direct</type>
 	<name>amq.direct</name>
 	<durable>true</durable>
 </exchange>
+```
