@@ -5,6 +5,9 @@
             <log description="Request Log" level="custom">
                 <property name="Log Property message" value="&quot;Welcome to HealthcareService&quot;"/>
             </log>
+            <log description="Log URI parameter" level="custom">
+                <property expression="get-property('uri.var.category')" name="URI Parameter"/>
+            </log>
             <send>
                 <endpoint key="QueryDoctorEP"/>
             </send>
