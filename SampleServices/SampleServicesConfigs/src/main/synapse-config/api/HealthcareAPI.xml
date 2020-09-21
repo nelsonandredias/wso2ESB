@@ -24,31 +24,38 @@
                 <property expression="json-eval($.hospital)" name="Hospital"/>
             </log>
             <property description="Set Property with Hospital" expression="json-eval($.hospital)" name="HospitalProperty" scope="default" type="STRING"/>
+            <log description="Card Number Log" level="custom">
+                <property expression="json-eval($.cardNo)" name="Card Number"/>
+            </log>
+            <property description="Set Property with Card Number" expression="json-eval($.cardNo)" name="card_numberProperty" scope="default" type="STRING"/>
             <datamapper config="gov:datamapper/RequestMapping.dmc" inputSchema="gov:datamapper/RequestMapping_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/RequestMapping_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/RequestMapping_xsltStyleSheet.xml"/>
             <switch description="Get Hospital" source="get-property('HospitalProperty')">
                 <case regex="grand oak community hospital">
                     <log description="Hospital Log1" level="custom">
                         <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
                     </log>
-                    <send>
+                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="grandoaks"/>
+                    <call>
                         <endpoint key="GrandOakEP"/>
-                    </send>
+                    </call>
                 </case>
                 <case regex="clemency medical center">
                     <log description="Hospital Log2" level="custom">
                         <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
                     </log>
-                    <send>
+                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="clemency"/>
+                    <call>
                         <endpoint key="ClemencyEP"/>
-                    </send>
+                    </call>
                 </case>
                 <case regex="pine valley community hospital">
                     <log description="Hospital Log3" level="custom">
                         <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
                     </log>
-                    <send>
+                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="pinevalley"/>
+                    <call>
                         <endpoint key="PineValleyEP"/>
-                    </send>
+                    </call>
                 </case>
                 <default>
                     <log description="Default Log" level="custom">
@@ -57,10 +64,43 @@
                     <respond description="Default Response"/>
                 </default>
             </switch>
+            <log description="Hospital Response">
+                <property expression="json-eval($)" name="HospitalEP Response"/>
+            </log>
+            <log description="Info Log" level="custom">
+                <property expression="json-eval($.appointmentNumber)" name="Appointment Number"/>
+                <property expression="json-eval($.doctor)" name="Doctor info"/>
+                <property expression="json-eval($.patient)" name="Patient Info"/>
+            </log>
+            <property description="Set Appointment Number to ChannelingFeeEP Service" expression="json-eval($.appointmentNumber)" name="uri.var.appointment_idProperty" scope="default" type="STRING"/>
+            <property description="Set Doctor Info to ChannelingFeeEP Service" expression="json-eval($.doctor)" name="uri.var.doctorInfoProperty" scope="default" type="STRING"/>
+            <property description="Set Patient Info to ChannelingFeeEP Service" expression="json-eval($.patient)" name="uri.var.patientInfoProperty" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="ChannelingFeeEP"/>
+            </call>
+            <log description="ChannelingFeeEP Response" level="custom">
+                <property expression="json-eval($)" name="ChannelingFeeEP Response"/>
+            </log>
+            <property description="Set Fee to SettlePaymentEP Service" expression="json-eval($.actualFee)" name="actual_feeProperty" scope="default" type="STRING"/>
+            <payloadFactory description="Set body payload of POST Request to SettlePaymentEP Service" media-type="json">
+                <format>{"appointmentNumber":$1, "doctor":$2, "patient":$3, "fee":$4, "confirmed":"false", "card_number":"$5"}</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:uri.var.appointment_idProperty"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.doctorInfoProperty"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.patientInfoProperty"/>
+                    <arg evaluator="xml" expression="$ctx:actual_feeProperty"/>
+                    <arg evaluator="xml" expression="$ctx:card_numberProperty"/>
+                </args>
+            </payloadFactory>
+            <log description="Payload Log" level="custom">
+                <property expression="json-eval($)" name="Payload Log"/>
+            </log>
+            <call>
+                <endpoint key="SettlePaymentEP"/>
+            </call>
+            <respond description="Response"/>
         </inSequence>
-        <outSequence>
-            <send/>
-        </outSequence>
+        <outSequence/>
         <faultSequence/>
     </resource>
 </api>

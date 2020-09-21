@@ -16,9 +16,11 @@
     <com.example.endpoint_._QueryDoctorEP>capp/EnterpriseServiceBus</com.example.endpoint_._QueryDoctorEP>
     <com.example.endpoint_._ClemencyEP>capp/EnterpriseServiceBus</com.example.endpoint_._ClemencyEP>
     <com.example.endpoint_._PineValleyEP>capp/EnterpriseServiceBus</com.example.endpoint_._PineValleyEP>
+    <com.example.endpoint_._ChannelingFeeEP>capp/EnterpriseServiceBus</com.example.endpoint_._ChannelingFeeEP>
     <com.example.api_._HealthcareAPI>capp/EnterpriseServiceBus</com.example.api_._HealthcareAPI>
     <com.example.resource_._RequestMapping_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_xsltStyleSheet>
     <com.example.endpoint_._GrandOakEP>capp/EnterpriseServiceBus</com.example.endpoint_._GrandOakEP>
+    <com.example.endpoint_._SettlePaymentEP>capp/EnterpriseServiceBus</com.example.endpoint_._SettlePaymentEP>
     <com.example.resource_._RequestMapping_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_outputSchema>
   </properties>
   <dependencies>
@@ -49,6 +51,18 @@
     <dependency>
       <groupId>com.example.inbound-endpoint</groupId>
       <artifactId>QueryDoctorInboundEndpoint</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>ChannelingFeeEP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>SettlePaymentEP</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
