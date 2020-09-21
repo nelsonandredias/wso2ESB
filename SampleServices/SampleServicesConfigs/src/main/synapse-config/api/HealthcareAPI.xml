@@ -17,4 +17,50 @@
         </outSequence>
         <faultSequence/>
     </resource>
+    <resource methods="POST" uri-template="/categories/{category}/reserve">
+        <inSequence>
+            <log description="Hospital Log" level="custom">
+                <property expression="get-property('uri.var.category')" name="Category"/>
+                <property expression="json-eval($.hospital)" name="Hospital"/>
+            </log>
+            <property description="Set Property with Hospital" expression="json-eval($.hospital)" name="HospitalProperty" scope="default" type="STRING"/>
+            <datamapper config="gov:datamapper/RequestMapping.dmc" inputSchema="gov:datamapper/RequestMapping_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/RequestMapping_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/RequestMapping_xsltStyleSheet.xml"/>
+            <switch description="Get Hospital" source="get-property('HospitalProperty')">
+                <case regex="grand oak community hospital">
+                    <log description="Hospital Log1" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="GrandOakEP"/>
+                    </send>
+                </case>
+                <case regex="clemency medical center">
+                    <log description="Hospital Log2" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="ClemencyEP"/>
+                    </send>
+                </case>
+                <case regex="pine valley community hospital">
+                    <log description="Hospital Log3" level="custom">
+                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
+                    </log>
+                    <send>
+                        <endpoint key="PineValleyEP"/>
+                    </send>
+                </case>
+                <default>
+                    <log description="Default Log" level="custom">
+                        <property expression="fn:concat('Invalid hospital - ', get-property('Hospital'))" name="message"/>
+                    </log>
+                    <respond description="Default Response"/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
 </api>

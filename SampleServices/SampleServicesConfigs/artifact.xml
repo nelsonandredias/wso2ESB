@@ -8,4 +8,13 @@
     <artifact name="QueryDoctorInboundEndpoint" groupId="com.example.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/inbound-endpoints/QueryDoctorInboundEndpoint.xml</file>
     </artifact>
+    <artifact name="GrandOakEP" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GrandOakEP.xml</file>
+    </artifact>
+    <artifact name="ClemencyEP" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ClemencyEP.xml</file>
+    </artifact>
+    <artifact name="PineValleyEP" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PineValleyEP.xml</file>
+    </artifact>
 </artifacts>
