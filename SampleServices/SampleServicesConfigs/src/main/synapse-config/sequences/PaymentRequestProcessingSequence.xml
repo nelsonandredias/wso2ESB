@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PaymentRequestProcessingSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <script description="Delay call for 10seconds" language="js"><![CDATA[java.lang.Thread.sleep(10000);]]></script>
+    <call>
+        <endpoint key="SettlePaymentEP"/>
+    </call>
+    <log description="SettlePaymentEP Response LOG" level="custom">
+        <property expression="json-eval($)" name="SettlePaymentEP Response"/>
+    </log>
+    <drop description="Terminate message flow"/>
+</sequence>

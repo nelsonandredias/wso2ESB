@@ -26,4 +26,13 @@
     <artifact name="HospitalRoutingTemplate" groupId="com.example.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/templates/HospitalRoutingTemplate.xml</file>
     </artifact>
+    <artifact name="PaymentRequestMessageStore" groupId="com.example.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/PaymentRequestMessageStore.xml</file>
+    </artifact>
+    <artifact name="PaymentRequestProcessingSequence" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PaymentRequestProcessingSequence.xml</file>
+    </artifact>
+    <artifact name="PaymentRequestProcessor" groupId="com.example.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/PaymentRequestProcessor.xml</file>
+    </artifact>
 </artifacts>

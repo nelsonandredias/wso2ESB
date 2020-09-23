@@ -96,9 +96,11 @@
             <log description="Payload Log" level="custom">
                 <property expression="json-eval($)" name="Payload Log"/>
             </log>
-            <call>
-                <endpoint key="SettlePaymentEP"/>
-            </call>
+            <store description="Store the payment request" messageStore="PaymentRequestMessageStore"/>
+            <payloadFactory description="Set body response" media-type="json">
+                <format>{"message":" Payment request successfully submitted. Payment confirmation will be sent via email ."}</format>
+                <args/>
+            </payloadFactory>
             <respond description="Response"/>
         </inSequence>
         <outSequence/>
