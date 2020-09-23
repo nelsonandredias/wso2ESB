@@ -31,28 +31,25 @@
             <datamapper config="gov:datamapper/RequestMapping.dmc" inputSchema="gov:datamapper/RequestMapping_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/RequestMapping_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/RequestMapping_xsltStyleSheet.xml"/>
             <switch description="Get Hospital" source="get-property('HospitalProperty')">
                 <case regex="grand oak community hospital">
-                    <log description="Hospital Log1" level="custom">
-                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
-                    </log>
-                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="grandoaks"/>
+                    <call-template description="Call Hospital Routing Template" target="HospitalRoutingTemplate">
+                        <with-param name="setHospital" value="grandoaks"/>
+                    </call-template>
                     <call>
                         <endpoint key="GrandOakEP"/>
                     </call>
                 </case>
                 <case regex="clemency medical center">
-                    <log description="Hospital Log2" level="custom">
-                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
-                    </log>
-                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="clemency"/>
+                    <call-template description="Call Hospital Routing Template" target="HospitalRoutingTemplate">
+                        <with-param name="setHospital" value="clemency"/>
+                    </call-template>
                     <call>
                         <endpoint key="ClemencyEP"/>
                     </call>
                 </case>
                 <case regex="pine valley community hospital">
-                    <log description="Hospital Log3" level="custom">
-                        <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="message"/>
-                    </log>
-                    <property description="Set Hospital Variable to ChannelingFeeEP Service" name="uri.var.hospitalProperty" scope="default" type="STRING" value="pinevalley"/>
+                    <call-template target="HospitalRoutingTemplate">
+                        <with-param name="setHospital" value="pinevalley"/>
+                    </call-template>
                     <call>
                         <endpoint key="PineValleyEP"/>
                     </call>
@@ -75,6 +72,10 @@
             <property description="Set Appointment Number to ChannelingFeeEP Service" expression="json-eval($.appointmentNumber)" name="uri.var.appointment_idProperty" scope="default" type="STRING"/>
             <property description="Set Doctor Info to ChannelingFeeEP Service" expression="json-eval($.doctor)" name="uri.var.doctorInfoProperty" scope="default" type="STRING"/>
             <property description="Set Patient Info to ChannelingFeeEP Service" expression="json-eval($.patient)" name="uri.var.patientInfoProperty" scope="default" type="STRING"/>
+            <log description="ChannelingFeeEP URI parameters LOG">
+                <property expression="get-property('uri.var.hospitalProperty')" name="requested uri.var.hospitalProperty"/>
+                <property expression="get-property('uri.var.appointment_idProperty')" name="requested uri.var.appointment_idProperty"/>
+            </log>
             <call>
                 <endpoint key="ChannelingFeeEP"/>
             </call>

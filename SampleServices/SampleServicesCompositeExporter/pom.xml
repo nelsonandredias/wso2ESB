@@ -14,6 +14,7 @@
     <com.example.resource_._RequestMapping_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_inputSchema>
     <com.example.resource_._RequestMapping>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping>
     <com.example.endpoint_._QueryDoctorEP>capp/EnterpriseServiceBus</com.example.endpoint_._QueryDoctorEP>
+    <com.example.template_._HospitalRoutingTemplate>capp/EnterpriseServiceBus</com.example.template_._HospitalRoutingTemplate>
     <com.example.endpoint_._ClemencyEP>capp/EnterpriseServiceBus</com.example.endpoint_._ClemencyEP>
     <com.example.endpoint_._PineValleyEP>capp/EnterpriseServiceBus</com.example.endpoint_._PineValleyEP>
     <com.example.endpoint_._ChannelingFeeEP>capp/EnterpriseServiceBus</com.example.endpoint_._ChannelingFeeEP>
@@ -25,34 +26,10 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.example.endpoint</groupId>
-      <artifactId>GrandOakEP</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.resource</groupId>
-      <artifactId>RequestMapping_xsltStyleSheet</artifactId>
-      <version>1.0.0</version>
-      <type>zip</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.resource</groupId>
       <artifactId>RequestMapping_outputSchema</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.api</groupId>
-      <artifactId>HealthcareAPI</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.inbound-endpoint</groupId>
-      <artifactId>QueryDoctorInboundEndpoint</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
     </dependency>
     <dependency>
       <groupId>com.example.endpoint</groupId>
@@ -73,18 +50,6 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.example.endpoint</groupId>
-      <artifactId>ClemencyEP</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.endpoint</groupId>
-      <artifactId>PineValleyEP</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.resource</groupId>
       <artifactId>RequestMapping</artifactId>
       <version>1.0.0</version>
@@ -95,6 +60,48 @@
       <artifactId>RequestMapping_inputSchema</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>GrandOakEP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>RequestMapping_xsltStyleSheet</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.api</groupId>
+      <artifactId>HealthcareAPI</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.inbound-endpoint</groupId>
+      <artifactId>QueryDoctorInboundEndpoint</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.template</groupId>
+      <artifactId>HospitalRoutingTemplate</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>ClemencyEP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>PineValleyEP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
     </dependency>
   </dependencies>
   <repositories>

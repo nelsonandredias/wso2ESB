@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="HospitalRoutingTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter isMandatory="false" name="setHospital"/>
+    <sequence>
+        <log description="Requested Hospital LOG">
+            <property expression="fn:concat('Routing to ', get-property('HospitalProperty'))" name="Requested hospital"/>
+            <property expression="$func:setHospital" name="setHospital"/>
+        </log>
+        <property description="Set Hospital Variable to ChannelingFeeEP Service" expression="$func:setHospital" name="uri.var.hospitalProperty" scope="default" type="STRING"/>
+    </sequence>
+    <description>Set Hospital Variable to ChannelingFeeEP Service</description>
+</template>
