@@ -1,0 +1,46 @@
+<data name="RDBMSDataService" serviceNamespace="" serviceGroup="" transports="">
+  <description />
+  <config id="mariaDB">
+    <property name="driverClassName">com.mysql.jdbc.Driver</property>
+    <property name="url">jdbc:mysql://localhost:3306/mulesoft_course</property>
+    <property name="username">root</property>
+    <property name="password">admin</property>
+  </config>
+  <resource method="GET" path="Employee/{EmployeeNumberIP}">
+    <description>get details from Employee based on ID</description>
+    <call-query href="GetEmployeeDetails">
+      <with-param name="EmployeeNumberIP" query-param="EmployeeNumberIP" />
+    </call-query>
+  </resource>
+  <resource method="GET" path="/Employee">
+    <description>Get all details of employees</description>
+    <call-query href="GetAllEmployeesDetails" />
+  </resource>
+  <query id="GetEmployeeDetails" useConfig="mariaDB">
+    <sql>select EmployeeNumber, FirstName, LastName, Email, Salary from Employees where EmployeeNumber=:EmployeeNumberIP</sql>
+    <param type="IN" name="EmployeeNumberIP" paramType="SCALAR" sqlType="STRING" optional="false" />
+    <result element="root">
+      <element name="EmployeeNumber" column="EmployeeNumber" xsdType="string" />
+      <element name="FirstName" column="FirstName" xsdType="string" />
+      <element name="LastName" column="LastName" xsdType="string" />
+      <element name="Email" column="Email" xsdType="string" />
+      <element name="SalaryCustom" column="Salary" xsdType="string" requiredRoles="" />
+    </result>
+  </query>
+  <query id="GetAllEmployeesDetails" useConfig="mariaDB">
+    <sql>select EmployeeNumber, FirstName, LastName, Email, Salary from Employees</sql>
+    <result outputType="json">{ "Employees":
+      {"Employee":[
+        {"EmployeeNumber":"$EmployeeNumber",                       
+         "Details": {
+          "FirstName":"$FirstName",
+          "LastName":"$LastName",
+          "Email":"$Email",
+          "Salary":"$Salary"
+         }
+        }                 
+      ]
+    }           
+}</result>
+  </query>
+</data>
