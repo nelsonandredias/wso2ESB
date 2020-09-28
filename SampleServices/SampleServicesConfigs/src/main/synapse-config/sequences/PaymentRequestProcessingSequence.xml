@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="PaymentRequestProcessingSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
     <script description="Delay call for 10seconds" language="js"><![CDATA[java.lang.Thread.sleep(10000);]]></script>
+    <log description="Email ID Log" level="custom">
+        <property expression="json-eval($.patient.email)" name="Email ID "/>
+    </log>
+    <property description="Set Email ID property" expression="json-eval($.patient.email)" name="email_idProperty" scope="default" type="STRING"/>
     <call>
         <endpoint key="SettlePaymentEP"/>
     </call>
     <log description="SettlePaymentEP Response LOG" level="custom">
         <property expression="json-eval($)" name="SettlePaymentEP Response"/>
     </log>
+    <property description="Set Payment Response" expression="json-eval($)" name="payment_responseProperty" scope="default" type="STRING"/>
+    <email.send configKey="smtpconn">
+        <from>nelsonmulesoft1@gmail.com</from>
+        <to>{$ctx:email_idProperty}</to>
+        <cc>srandrediaz@gmail.com</cc>
+        <subject>Payment Status</subject>
+        <content>{$ctx:payment_responseProperty}</content>
+    </email.send>
     <drop description="Terminate message flow"/>
 </sequence>

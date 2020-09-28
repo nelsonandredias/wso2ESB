@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="smtpconn" xmlns="http://ws.apache.org/ns/synapse">
+    <email.init>
+        <connectionType>SMTPS</connectionType>
+        <password>rootadmin</password>
+        <host>smtp.gmail.com</host>
+        <port>465</port>
+        <name>smtpconn</name>
+        <username>wso2test88@gmail.com</username>
+    </email.init>
+</localEntry>

@@ -9,23 +9,26 @@
   <name>SampleServicesCompositeExporter</name>
   <description>SampleServicesCompositeExporter</description>
   <properties>
-    <com.example.inbound-endpoint_._QueryDoctorInboundEndpoint>capp/EnterpriseServiceBus</com.example.inbound-endpoint_._QueryDoctorInboundEndpoint>
-    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
-    <com.example.resource_._RequestMapping_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_inputSchema>
-    <com.example.resource_._RequestMapping>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping>
-    <com.example.endpoint_._QueryDoctorEP>capp/EnterpriseServiceBus</com.example.endpoint_._QueryDoctorEP>
-    <com.example.sequence_._PaymentRequestProcessingSequence>capp/EnterpriseServiceBus</com.example.sequence_._PaymentRequestProcessingSequence>
-    <com.example.message-store_._PaymentRequestMessageStore>capp/EnterpriseServiceBus</com.example.message-store_._PaymentRequestMessageStore>
-    <com.example.message-processors_._PaymentRequestProcessor>capp/EnterpriseServiceBus</com.example.message-processors_._PaymentRequestProcessor>
-    <com.example.template_._HospitalRoutingTemplate>capp/EnterpriseServiceBus</com.example.template_._HospitalRoutingTemplate>
-    <com.example.endpoint_._ClemencyEP>capp/EnterpriseServiceBus</com.example.endpoint_._ClemencyEP>
-    <com.example.endpoint_._PineValleyEP>capp/EnterpriseServiceBus</com.example.endpoint_._PineValleyEP>
-    <com.example.endpoint_._ChannelingFeeEP>capp/EnterpriseServiceBus</com.example.endpoint_._ChannelingFeeEP>
     <com.example.api_._HealthcareAPI>capp/EnterpriseServiceBus</com.example.api_._HealthcareAPI>
+    <com.example_._smtpconnection>capp/EnterpriseServiceBus</com.example_._smtpconnection>
+    <com.example_._smtpconn>capp/EnterpriseServiceBus</com.example_._smtpconn>
     <com.example.resource_._RequestMapping_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_xsltStyleSheet>
-    <com.example.endpoint_._GrandOakEP>capp/EnterpriseServiceBus</com.example.endpoint_._GrandOakEP>
+    <com.example.resource_._RequestMapping_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_inputSchema>
     <com.example.endpoint_._SettlePaymentEP>capp/EnterpriseServiceBus</com.example.endpoint_._SettlePaymentEP>
+    <com.example.message-processors_._PaymentRequestProcessor>capp/EnterpriseServiceBus</com.example.message-processors_._PaymentRequestProcessor>
+    <com.example.resource_._RequestMapping>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping>
+    <com.example.message-store_._PaymentRequestMessageStore>capp/EnterpriseServiceBus</com.example.message-store_._PaymentRequestMessageStore>
+    <com.example.endpoint_._ClemencyEP>capp/EnterpriseServiceBus</com.example.endpoint_._ClemencyEP>
+    <com.example.lib_._email-connector>capp/EnterpriseServiceBus</com.example.lib_._email-connector>
+    <com.example.endpoint_._GrandOakEP>capp/EnterpriseServiceBus</com.example.endpoint_._GrandOakEP>
+    <com.example.endpoint_._QueryDoctorEP>capp/EnterpriseServiceBus</com.example.endpoint_._QueryDoctorEP>
+    <com.example.endpoint_._ChannelingFeeEP>capp/EnterpriseServiceBus</com.example.endpoint_._ChannelingFeeEP>
+    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <com.example.endpoint_._PineValleyEP>capp/EnterpriseServiceBus</com.example.endpoint_._PineValleyEP>
+    <com.example.sequence_._PaymentRequestProcessingSequence>capp/EnterpriseServiceBus</com.example.sequence_._PaymentRequestProcessingSequence>
+    <com.example.inbound-endpoint_._QueryDoctorInboundEndpoint>capp/EnterpriseServiceBus</com.example.inbound-endpoint_._QueryDoctorInboundEndpoint>
     <com.example.resource_._RequestMapping_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._RequestMapping_outputSchema>
+    <com.example.template_._HospitalRoutingTemplate>capp/EnterpriseServiceBus</com.example.template_._HospitalRoutingTemplate>
   </properties>
   <dependencies>
     <dependency>
@@ -47,6 +50,12 @@
       <type>xml</type>
     </dependency>
     <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>smtpconnection</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
       <groupId>com.example.endpoint</groupId>
       <artifactId>QueryDoctorEP</artifactId>
       <version>1.0.0</version>
@@ -61,6 +70,12 @@
     <dependency>
       <groupId>com.example.resource</groupId>
       <artifactId>RequestMapping_inputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.lib</groupId>
+      <artifactId>email-connector</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
     </dependency>
@@ -91,6 +106,12 @@
     <dependency>
       <groupId>com.example.template</groupId>
       <artifactId>HospitalRoutingTemplate</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>smtpconn</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

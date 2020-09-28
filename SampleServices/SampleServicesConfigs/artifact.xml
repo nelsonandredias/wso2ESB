@@ -35,4 +35,13 @@
     <artifact name="PaymentRequestProcessor" groupId="com.example.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/message-processors/PaymentRequestProcessor.xml</file>
     </artifact>
+    <artifact name="smtpconnection" groupId="com.example" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\smtpconnection.xml</file>
+    </artifact>
+    <artifact name="smtpconnection" groupId="com.example" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\smtpconnection.xml</file>
+    </artifact>
+    <artifact name="smtpconn" groupId="com.example" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>\src\main\synapse-config\local-entries\smtpconn.xml</file>
+    </artifact>
 </artifacts>
