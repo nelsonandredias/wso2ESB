@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="FaultSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Fault Error Message LOG" level="custom">
+        <property name="FaultMessage" value="Fault Message Executed"/>
+        <property expression="$ctx:ERROR_MESSAGE" name=": ERROR_MESSAGE"/>
+    </log>
+    <payloadFactory description="Set Payload Error Message" media-type="json">
+        <format>{"Status":"Error Occurred While Processing the Request", "Message":"$1"}</format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+        </args>
+    </payloadFactory>
+    <respond description="Send out Error Message"/>
+</sequence>

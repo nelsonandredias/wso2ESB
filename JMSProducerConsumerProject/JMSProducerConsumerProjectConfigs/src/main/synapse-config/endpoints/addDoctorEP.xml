@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="addDoctorEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="post" uri-template="http://localhost:9090/{uri.var.hospital.name}/categories/admin/doctor/newdoctor">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </http>
+    <description>This will be used to send the doctor details to the back-end service (Healthcare service)</description>
+</endpoint>

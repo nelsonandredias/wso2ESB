@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="AddDoctorSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Receiving Doctor Details LOG" level="full" separator=";">
+        <property name="query " value="******************************** Receiving Doctor Details ********************************"/>
+        <property expression="json-eval($)" name="payload"/>
+    </log>
+    <property description="SET hospital" expression="json-eval($.hospital)" name="hospital" scope="default" type="STRING"/>
+    <log description="Hospital LOG" level="custom">
+        <property expression="$ctx:hospital" name="hospital"/>
+    </log>
+    <switch source=" $ctx:hospital">
+        <case regex="grand oak community hospital">
+            <property description="SET uri.var.hospital.name" name="uri.var.hospital.name" scope="default" type="STRING" value="grandoaks"/>
+        </case>
+        <case regex="clemency medical center">
+            <property description="SET uri.var.hospital.name" name="uri.var.hospital.name" scope="default" type="STRING" value="clemency"/>
+        </case>
+        <case regex="pine valley community hospital">
+            <property description="SET uri.var.hospital.name" name="uri.var.hospital.name" scope="default" type="STRING" value="pinevalley"/>
+        </case>
+        <case regex="willow gardens general hospital">
+            <property description="SET uri.var.hospital.name" name="uri.var.hospital.name" scope="default" type="STRING" value="willowogardens"/>
+        </case>
+        <default/>
+    </switch>
+    <call>
+        <endpoint key="addDoctorEP"/>
+    </call>
+    <log description="AddDoctor EP LOG" level="full" separator=","/>
+</sequence>

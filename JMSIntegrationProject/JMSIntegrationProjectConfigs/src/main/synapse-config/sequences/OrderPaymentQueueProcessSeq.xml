@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="OrderPaymentQueueProcessSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log order payment payload" level="full"/>
+    <payloadFactory media-type="json">
+        <format>{"message":" json-eval($.)}</format>
+        <args/>
+    </payloadFactory>
+    <log level="custom">
+        <property name="ORDER PAYMENT QUEUE PROCESS SEQ" value="json-eva($.)"/>
+    </log>
+</sequence>
