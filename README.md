@@ -71,6 +71,34 @@ activeio-core-3.1.4.jar (available in the ACTIVEMQ_HOME/lib/optional directory)
  ```
 
 
+## Create Custom Mediator and use it in a Project
+
+1. Create a Custom Mediator via Integration Studio
+
+	* Create New Mediator Project:
+	It will create a Java Class that extends AbstractMediator class
+	
+	* "Export project as Deployable Archive" 
+	Get the project jar.
+	
+	*Copy the project jar to runtime lib
+	
+		Integration Studio:
+			```
+			C:\DevTools\IntegrationStudio\runtime\microesb\lib
+			```
+		Micro-integrator:
+			```
+			C:\Program Files\WSO2\Enterprise Integrator\7.1.0\micro-integrator\wso2\lib
+			```
+
+2. Drag and drop a Class Mediator to to your design project
+
+	* Define the class name 
+
+	* Define the value of any existing property
+	
+
 ## Ex2- Store Message with WSO2 Broker queue
 
 In order to avoid ***´error: no route for message error code 312: no route´***, it is important to create the testing queue in the WSO2 Broker: 
