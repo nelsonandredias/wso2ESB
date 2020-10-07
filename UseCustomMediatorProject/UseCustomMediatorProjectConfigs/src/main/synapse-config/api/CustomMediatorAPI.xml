@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/custommediator" name="CustomMediatorAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <property description="SET Custom Message" name="customMessage" scope="default" type="STRING" value="Hello World"/>
+            <class description="Custom Mediator - My Mediator" name="org.wso2.sample.MyMediator">
+                <property expression="$ctx:customMessage" name="message"/>
+            </class>
+            <payloadFactory description="SET Payload Response" media-type="json">
+                <format>{&#xd;
+  "message": $1&#xd;
+}</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:customMessage"/>
+                </args>
+            </payloadFactory>
+            <respond description="SEND Response"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
