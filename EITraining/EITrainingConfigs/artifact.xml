@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="HealthCareAPI" groupId="com.polarising.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/HealthCareAPI.xml</file>
+    </artifact>
+    <artifact name="GrandOaksEP" groupId="com.polarising.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GrandOaksEP.xml</file>
+    </artifact>
+    <artifact name="ChannelingFeeEP" groupId="com.polarising.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ChannelingFeeEP.xml</file>
+    </artifact>
+</artifacts>

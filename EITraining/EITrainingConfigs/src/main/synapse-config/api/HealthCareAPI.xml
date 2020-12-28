@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/healthcare" name="HealthCareAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/categories/{category}/reserve">
+        <inSequence>
+            <datamapper config="gov:datamapper/RequestMapper.dmc" description="request mapper" inputSchema="gov:datamapper/RequestMapper_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/RequestMapper_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/RequestMapper_xsltStyleSheet.xml"/>
+            <log description="log data" level="full"/>
+            <call>
+                <endpoint key="GrandOaksEP"/>
+            </call>
+            <log level="full" separator="LOG Reserve"/>
+            <property description="appointment_id " expression="json-eval($.appointmentNumber)" name="uri.var.appointment_id" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="ChannelingFeeEP"/>
+            </call>
+            <respond description="send out response"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
